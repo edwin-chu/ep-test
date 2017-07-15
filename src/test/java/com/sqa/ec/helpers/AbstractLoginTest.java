@@ -7,6 +7,8 @@
  */
 package com.sqa.ec.helpers;
 
+import org.testng.annotations.*;
+
 /**
  * AbstractLoginTest //ADDD (description of class)
  * <p>
@@ -27,10 +29,21 @@ public abstract class AbstractLoginTest extends BasicTest
 	public AbstractLoginTest(String baseUrl)
 	{
 		super(baseUrl);
-		// TODO Auto-generated constructor stub
 	}
 
 	abstract public void login(String username, String password);
 
 	abstract public void logout();
+
+	@BeforeClass
+	public void setupLogin()
+	{
+		login(getProp("username"), getProp("password"));
+	}
+
+	@AfterClass
+	public void setupLogout()
+	{
+		logout();
+	}
 }

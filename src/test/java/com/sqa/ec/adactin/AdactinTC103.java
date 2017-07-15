@@ -1,10 +1,3 @@
-/**
- * File Name: AdactinTC102.java<br>
- * Chu, Edwin<br>
- * Java Boot Camp Exercise<br>
- * Instructor: Jean-francois Nepton<br>
- * Created: Jul 7, 2017
- */
 package com.sqa.ec.adactin;
 
 import java.text.*;
@@ -16,25 +9,13 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.*;
 import org.testng.annotations.*;
 
-/**
- * AdactinTC102 //ADDD (description of class)
- * <p>
- * //ADDD (description of core fields)
- * <p>
- * //ADDD (description of core methods)
- *
- * @author Chu, Edwin
- * @version 1.0.0
- * @since 1.0
- */
-public class AdactinTC102 extends AdactinTest
+public class AdactinTC103 extends AdactinTest
 {
 
 	public void checkError()
 	{
 		try
-		{
-			// get error messages
+		{ 	// get error messages
 			String checkInDateError = getDriver().findElement(By.id("checkin_span")).getText();
 			String checkOutDateError = getDriver().findElement(By.id("checkout_span")).getText();
 			// declare expected message
@@ -43,11 +24,10 @@ public class AdactinTC102 extends AdactinTest
 			// Assert actual and expected error messages
 			Assert.assertEquals(checkInDateError, expectedCheckInError);
 			Assert.assertEquals(checkOutDateError, expectedCheckOutError);
-			getLog().info("Test Success!");
+			getLog().info("Test Success! Error Message Display");
 		} catch (NoSuchElementException e)
 		{
-			// TODO Auto-generated catch block
-			getLog().error("Test Failed!  Error message not found");
+			getLog().error("Test Failed! Error Message NOT Found");
 		}
 	}
 
@@ -62,7 +42,7 @@ public class AdactinTC102 extends AdactinTest
 		enterCheckOutDate();
 		search();
 		checkError();
-		getLog().info("Test Complete");
+		System.out.println("Test Complete");
 	}
 
 	public void enterCheckInDate()
@@ -73,7 +53,7 @@ public class AdactinTC102 extends AdactinTest
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar checkIn = Calendar.getInstance();
 		checkIn.setTime(new Date());	// today's date
-		checkIn.add(Calendar.DATE, 7);	// add 7 days
+		checkIn.add(Calendar.DATE, -5);	// subtract 5 days
 		System.out.println(dateFormat.format(checkIn.getTime()));
 		checkInDate.sendKeys(dateFormat.format(checkIn.getTime()));
 	}
@@ -86,7 +66,7 @@ public class AdactinTC102 extends AdactinTest
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar checkOut = Calendar.getInstance();
 		checkOut.setTime(new Date());
-		checkOut.add(Calendar.DATE, 5);
+		checkOut.add(Calendar.DATE, -3);
 		System.out.println(dateFormat.format(checkOut.getTime()));
 		checkOutDate.sendKeys(dateFormat.format(checkOut.getTime()));
 	}

@@ -8,7 +8,6 @@
 package com.sqa.ec.adactin;
 
 import org.openqa.selenium.*;
-import org.testng.annotations.*;
 
 import com.sqa.ec.helpers.*;
 
@@ -34,22 +33,9 @@ public abstract class AdactinTest extends AbstractLoginTest
 		super("http://adactin.com/HotelApp");
 	}
 
-	@BeforeClass
-	public void adactinLogin()
-	{
-		login("sqabcjune12", "sqaadmin2017");
-	}
-
-	@AfterClass
-	public void adactinLogout()
-	{
-		logout();
-	}
-
 	@Override
 	public void login(String username, String password)
 	{
-		// System.out.println("Before Login Method");
 		this.takeScreenshot("Pre Login");
 		WebElement usernameField = getDriver().findElement(By.id("username"));
 		WebElement passwordField = getDriver().findElement(By.id("password"));
