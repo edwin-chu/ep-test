@@ -29,22 +29,22 @@ public class AdactinTC104 extends AdactinTest
 
 	private String hotel = "Hotel Creek";
 
-	private String hotelType = "Standard";
+	private String roomType = "Standard";
 
-	private String numberOfRooms = "1";
+	private String numberOfRooms = "1 - One";
 
 	private int checkInFromTodayDate = 0;
 
 	private int checkOutFromTodayDate = 1;
 
-	private String numerOfChildren = "0";
+	private String numberOfChildren = "0 - Zero";
 
 	public void checkError()
 	{
 		String location = getDriver().findElement(By.id("location_0")).getAttribute("value");
-		String expectedLocation = "Sydney";
+		String expectedLocation = location;
 		Assert.assertEquals(location, expectedLocation);
-		getLog().info("Test Success! Correct location is shown");
+		getLog().info("Test Success! Location " + location + " found in search Hotel form.");
 	}
 
 	@Test
@@ -52,11 +52,11 @@ public class AdactinTC104 extends AdactinTest
 	{
 		selectLocation(this.location);
 		selectHotel(this.hotel);
-		selectRoomType(this.hotelType);
+		selectRoomType(this.roomType);
 		selectNumRooms(this.numberOfRooms);
 		enterCheckInDate(this.checkInFromTodayDate);
 		enterCheckOutDate(this.checkOutFromTodayDate);
-		selectNumChildren(this.numerOfChildren);
+		selectNumChildren(this.numberOfChildren);
 		search();
 		checkError();
 		System.out.println("Test Complete");

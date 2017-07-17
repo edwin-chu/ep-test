@@ -29,9 +29,9 @@ public class AdactinTC102 extends AdactinTest
 
 	private String hotel = "Hotel Creek";
 
-	private String hotelType = "Standard";
+	private String roomType = "Standard";
 
-	private String numberOfRooms = "1";
+	private String numberOfRooms = "1 - One";
 
 	private int checkInFromTodayDate = 7;
 
@@ -63,7 +63,7 @@ public class AdactinTC102 extends AdactinTest
 	{
 		selectLocation(this.location);
 		selectHotel(this.hotel);
-		selectRoomType(this.hotelType);
+		selectRoomType(this.roomType);
 		selectNumRooms(this.numberOfRooms);
 		enterCheckInDate(this.checkInFromTodayDate);
 		enterCheckOutDate(this.checkOutFromTodayDate);
