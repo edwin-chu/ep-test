@@ -83,6 +83,11 @@ public class Core
 		return this.log;
 	}
 
+	public String getProp(String propName)
+	{
+		return AutoBasics.getProp(propName, "src/main/resources/", "config.properties", getLog());
+	}
+
 	public boolean isPresent(By by)
 	{
 		return AutoBasics.isElementPresent(getDriver(), by, getLog());
