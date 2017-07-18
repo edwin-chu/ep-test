@@ -40,18 +40,25 @@ public class AdactinTC108 extends AdactinTest
 
 	public void verifyPrice()
 	{
-		int beginIndex = 0;
-		int endIndex = 1;
-		int perNightPriceInDigit = 3;
-		int totalCostInDigit = 3;
-		int totalRooms = Integer.parseInt(this.numberOfRooms.substring(beginIndex, endIndex));
+		// parse int value of String variable numberOfRooms
+		int totalRooms = Integer.valueOf(this.numberOfRooms.replaceAll("[^\\d]+", ""));
 		int totalNight = this.checkOutFromTodayDate - this.checkInFromTodayDate;
+		// declare WebElement for price per night field and get the value of
+		// attribute in String
 		WebElement pricePerNight = getDriver().findElement(By.id("price_night_0"));
 		String perNightPrice = pricePerNight.getAttribute("value");
-		int costPerNight = Integer.parseInt(perNightPrice.substring(perNightPrice.length() - perNightPriceInDigit, perNightPrice.length()));
-		int totalCost = totalRooms * totalNight * costPerNight;
+		// parse the value of price per night from String to int value
+		int costPerNight = Integer.valueOf(perNightPrice.replaceAll("[^\\d]+", ""));
+		// calculate total cost in int value
+		int expectedCost = totalRooms * totalNight * costPerNight;
+		// declare WebElement for total price field and get the attribute value
+		// in String
 		WebElement price = getDriver().findElement(By.id("total_price_0"));
 		String totalPrice = price.getAttribute("value");
-		Assert.assertEquals(totalPrice.substring(totalPrice.length() - totalCostInDigit, totalPrice.length()), String.valueOf(totalCost));
+		// parse the value of totalPrice from String to int
+		int actualTotalCost = Integer.valueOf(totalPrice.replaceAll("[^\\d]+", ""));
+		// Assert two String - convert float values of actualTotalCost
+		// and expectedCost to String
+		Assert.assertEquals(String.valueOf(actualTotalCost), String.valueOf(expectedCost));
 	}
 }
