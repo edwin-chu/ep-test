@@ -1,7 +1,7 @@
-# Basic Project
-## Basic Project Structure
+# EP Auto Test Project
+## Basic EP Auto Test Structure
 
-*Default Structure for A Basic Project*
+*Default Structure for A EP Auto Test Project*
 
 
 **Java 8**
@@ -9,5 +9,5 @@
 *Maven
 *JUnit
 
-Java Project for SQA Boot Camp Program.
+
 
