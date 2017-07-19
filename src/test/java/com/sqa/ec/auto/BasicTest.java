@@ -4,6 +4,7 @@ import java.util.concurrent.*;
 
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.safari.*;
 import org.testng.annotations.*;
 
 public class BasicTest extends Core
@@ -38,6 +39,21 @@ public class BasicTest extends Core
 		System.out.println("Before Setting FF Driver");
 		setDriver(new FirefoxDriver());
 		System.out.println("After setting FF Driver");
+		// Set the base URL for this test
+		// this.baseUrl = "https://www.amazon.com/";
+		// Set an implicit wait of up to 30 seconds
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// Maximize the window
+		getDriver().manage().window().maximize();
+	}
+
+	@BeforeClass(enabled = false)
+	public void setUpSafari()
+	{
+		// Setup the driver to use Safari
+		System.out.println("Before Setting Safari Driver");
+		setDriver(new SafariDriver());
+		System.out.println("After setting Safari Driver");
 		// Set the base URL for this test
 		// this.baseUrl = "https://www.amazon.com/";
 		// Set an implicit wait of up to 30 seconds
